@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Sofia Pro, sans-serif;
+}
+
+body {
+  background: #f6f6f6;
+  color: #333333;
+  -webkit-font-smoothing: antialiased !important;
+}
