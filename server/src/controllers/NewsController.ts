@@ -8,7 +8,7 @@ class NewsController {
     const report = await knex("news").where("id", id).first();
 
     if (!report) {
-      return res.status(400).json({ message: "Point not found." });
+      return res.status(400).json({ message: "Report not found." });
     }
 
     return res.json(report);
@@ -17,11 +17,7 @@ class NewsController {
   async index(req: Request, res: Response) {
     const news = await knex("news").distinct("news.*");
 
-    const serializedNews = news.map((report) => {
-      return report;
-    });
-
-    return res.json(serializedNews);
+    return res.json(news);
   }
 
   async create(req: Request, res: Response) {
@@ -44,6 +40,26 @@ class NewsController {
       id: report_id,
       ...report,
     });
+  }
+
+  async update(req: Request, res: Response) {
+    const { title, description, author, id } = req.body;
+
+    if (!title && !description && !author) {
+      return res.status(400).json({ message: "Nothing o be changed." });
+    }
+
+    const updatedReport = await knex("news")
+      .update({ title, description, author })
+      .where({ id });
+
+    if (!updatedReport) {
+      return res.status(400).json({ message: "Report not found." });
+    }
+
+    const report = await knex("news").where("id", id).first();
+
+    return res.json(report);
   }
 }
 

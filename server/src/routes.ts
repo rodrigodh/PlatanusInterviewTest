@@ -10,6 +10,7 @@ const newsController = new NewsController();
 const authorsController = new AuthorsController();
 
 routes.get("/authors", authorsController.create);
+
 routes.get("/news", newsController.index);
 routes.get("/news/:id", newsController.show);
 
@@ -28,6 +29,23 @@ routes.post(
     }
   ),
   newsController.create
+);
+routes.put(
+  "/news",
+  celebrate(
+    {
+      body: Joi.object().keys({
+        id: Joi.number().required(),
+        title: Joi.string(),
+        description: Joi.string(),
+        author: Joi.string(),
+      }),
+    },
+    {
+      abortEarly: false,
+    }
+  ),
+  newsController.update
 );
 
 export default routes;
