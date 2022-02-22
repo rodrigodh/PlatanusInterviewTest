@@ -13,6 +13,7 @@ routes.get("/authors", authorsController.create);
 
 routes.get("/news", newsController.index);
 routes.get("/news/:id", newsController.show);
+routes.delete("/news/:id", newsController.delete);
 
 routes.post(
   "/news",

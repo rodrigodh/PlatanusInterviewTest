@@ -61,6 +61,18 @@ class NewsController {
 
     return res.json(report);
   }
+
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: "Id is required." });
+    }
+
+    await knex("news").delete().where("id", id);
+
+    return res.status(200).json({ message: "Report deleted." });
+  }
 }
 
 export default NewsController;
