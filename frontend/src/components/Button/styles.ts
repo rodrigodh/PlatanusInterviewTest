@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.button<{ isSecondary?: boolean }>`
   transition: 0.5s;
   border: 0;
   outline: 0;
@@ -23,4 +23,14 @@ export const Container = styled.button`
   :hover {
     background: var(--primary-dark);
   }
+
+  ${({ isSecondary }) =>
+    isSecondary &&
+    css`
+      background: var(--secondary);
+
+      :hover {
+        background: var(--secondary-dark);
+      }
+    `}
 `;
