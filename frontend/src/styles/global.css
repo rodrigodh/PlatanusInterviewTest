@@ -10,3 +10,10 @@ body {
   color: #333333;
   -webkit-font-smoothing: antialiased !important;
 }
+
+html {
+  --background: #f6f6f6;
+  --primary: #3F0E62;
+  --secondary: #007AFF;
+  --text: #333333;
+}
