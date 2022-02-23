@@ -17,4 +17,9 @@ html {
   --secondary: #007AFF;
   --text: #333333;
   --primary-dark: #320b4e;
+  --secondary-dark: #0061cc;
+}
+
+a {
+  text-decoration: none;
 }

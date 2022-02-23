@@ -15,4 +15,12 @@ export const Container = styled.div`
   > header button {
     margin-left: 2rem;
   }
+
+  > section {
+    margin-top: 2rem;
+
+    div + div {
+      margin-top: 2rem;
+    }
+  }
 `;
