@@ -1,18 +1,17 @@
+import { Report } from "../../types/report";
+
 import { Container } from "./styles";
 
-export function ReportCard() {
+interface Props {
+  report: Report;
+}
+
+export function ReportCard({ report }: Props) {
   return (
     <Container>
-      <h3>Working with React Dropzone</h3>
+      <h3>{report.title}</h3>
 
-      <p>
-        Stop using console.log for everything 🙄. I have seen and continue to
-        see many developers regularly use the console object’s log method in a
-        way that I think is incorrect. Using console.log for debugging Many
-        developers still use the log method to debug their application. For
-        example, to make sure that the code goes… So I decided to give it a
-        shot…
-      </p>
+      <p>{report.description}</p>
 
       <footer>
         <img
@@ -20,7 +19,7 @@ export function ReportCard() {
           alt="ProfilePicture"
         />
 
-        <strong>Cuphead</strong>
+        <strong>{report.author}</strong>
       </footer>
     </Container>
   );

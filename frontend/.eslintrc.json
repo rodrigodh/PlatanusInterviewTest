@@ -19,7 +19,8 @@
   "plugins": [
     "react",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "react-hooks"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
