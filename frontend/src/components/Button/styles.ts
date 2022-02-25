@@ -13,7 +13,7 @@ export const Container = styled.button<{ isSecondary?: boolean }>`
   font-size: 16px;
 
   background: var(--primary);
-  color: #ffffff;
+  color: var(--white);
 
   > svg {
     margin-bottom: 3px;

@@ -7,7 +7,7 @@ export const Container = styled(Link)`
   flex-direction: column;
   padding: 16px;
   border-radius: 10px;
-  background: #ffffff;
+  background: var(--white);
   border: 2px solid transparent;
   transition: 0.5s;
   cursor: pointer;
@@ -47,6 +47,6 @@ export const Container = styled(Link)`
 
   :hover {
     background: var(--background);
-    border: 4px solid #ffffff;
+    border: 4px solid var(--white);
   }
 `;

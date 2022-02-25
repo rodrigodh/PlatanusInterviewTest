@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 10px;
   padding: 8px 16px;
   transition: 0.5s;
-  background: #ffffff;
+  background: var(--white);
   flex: 1;
 
   input {

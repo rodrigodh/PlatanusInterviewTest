@@ -61,7 +61,7 @@ export function Input({ name, label, containerStyle, ...rest }: InputProps) {
 
       {error && (
         <Error title={error}>
-          <FiAlertCircle color="#c53030" size={20} />
+          <FiAlertCircle color="var(--error)" size={20} />
         </Error>
       )}
     </Container>

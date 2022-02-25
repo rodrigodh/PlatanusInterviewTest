@@ -2,6 +2,7 @@ import { FiHome } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import { Button } from "../Button";
+
 import { Container } from "./styles";
 
 export function Header() {

@@ -8,11 +8,11 @@ import { Input } from "../../components/Input";
 import { Header } from "../../components/Header";
 import { Button } from "../../components/Button";
 
-import { Container } from "./styles";
 import { getValidationErrors } from "../../utils/getValidationErrors";
 import { api } from "../../services/api";
 import { Textarea } from "../../components/Textarea";
 import { useToast } from "../../hooks/toast";
+import { Container } from "./styles";
 
 interface FormData {
   title: string;

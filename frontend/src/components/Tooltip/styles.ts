@@ -17,6 +17,7 @@ export const Container = styled.div`
     left: 50%;
     transform: translateX(-50%);
     color: var(--white);
+
     &::before {
       // Flecha em baixo do tooltip.
       content: "";
@@ -29,6 +30,7 @@ export const Container = styled.div`
       transform: translateX(-50%);
     }
   }
+
   &:hover span {
     opacity: 1;
     visibility: visible;
