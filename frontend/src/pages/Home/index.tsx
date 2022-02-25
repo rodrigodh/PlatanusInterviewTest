@@ -32,7 +32,7 @@ export function Home() {
 
   useEffect(() => {
     handleGetNews();
-  }, []);
+  }, [handleGetNews]);
 
   return (
     <Container>

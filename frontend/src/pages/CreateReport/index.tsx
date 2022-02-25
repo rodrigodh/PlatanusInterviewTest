@@ -12,6 +12,7 @@ import { Container } from "./styles";
 import { getValidationErrors } from "../../utils/getValidationErrors";
 import { api } from "../../services/api";
 import { Textarea } from "../../components/Textarea";
+import { useToast } from "../../hooks/toast";
 
 interface FormData {
   title: string;
@@ -22,6 +23,7 @@ interface FormData {
 export function CreateReport() {
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(
     async (data: FormData) => {
@@ -46,16 +48,31 @@ export function CreateReport() {
           author,
         });
 
-        if (response) navigate("/");
+        if (response) {
+          navigate("/");
+          addToast({
+            type: "sucess",
+            title: "Noticia publicada com sucesso!",
+            description: "Sua noticia ja esta visivel",
+          });
+        }
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+
+          return;
         }
+
+        addToast({
+          type: "error",
+          title: "Falha ao publicar noticia",
+          description: "Verifique a sua conexao e tente novamente",
+        });
       }
     },
-    [navigate]
+    [navigate, addToast]
   );
 
   return (

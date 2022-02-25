@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
+import { useToast } from "../../hooks/toast";
 
 import { api } from "../../services/api";
 import { Report } from "../../types/report";
@@ -10,6 +11,8 @@ import { Container, Profile } from "./styles";
 
 export function ReportCard() {
   const [report, setReport] = useState({} as Report);
+
+  const { addToast } = useToast();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -22,10 +25,25 @@ export function ReportCard() {
   }, [id]);
 
   const handleDeleteReport = useCallback(async () => {
-    await api.delete(`news/${id}`).then(() => {
-      navigate("/");
-    });
-  }, [id, navigate]);
+    await api
+      .delete(`news/${id}`)
+      .then(() => {
+        navigate("/");
+
+        addToast({
+          type: "sucess",
+          title: "Noticia deletada com sucesso!",
+          description: "Sua noticia foi deletada sem problemas!",
+        });
+      })
+      .catch(() => {
+        addToast({
+          type: "error",
+          title: "Falha ao deletar noticia!",
+          description: "Verifique sua conexao e tente novamente!",
+        });
+      });
+  }, [id, navigate, addToast]);
 
   useEffect(() => {
     handleGetReportInfo();
