@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
@@ -39,11 +40,13 @@ export function Home() {
 
       <header>
         <Search onChange={(e) => setSearch(e.target.value)} value={search} />
-        <Button isSecondary>Adicionar noticia</Button>
+        <Link to="/create-report">
+          <Button isSecondary>Adicionar noticia</Button>
+        </Link>
       </header>
 
       <section>
-        {filteredNews.map((report) => (
+        {filteredNews.reverse().map((report) => (
           <ReportCard key={report.id} report={report} />
         ))}
       </section>

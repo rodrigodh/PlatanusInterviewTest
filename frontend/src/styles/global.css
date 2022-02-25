@@ -18,6 +18,8 @@ html {
   --text: #333333;
   --primary-dark: #320b4e;
   --secondary-dark: #0061cc;
+  --white: #ffffff;
+  --error: #FF312E;
 }
 
 a {

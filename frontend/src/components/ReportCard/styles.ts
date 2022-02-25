@@ -16,7 +16,10 @@ export const Container = styled.div`
   }
 
   > p {
+    overflow-x: hidden;
     margin: 16px 0;
+    white-space: pre-line;
+    text-overflow: ellipsis;
   }
 
   > footer {
