@@ -1,8 +1,8 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Form } from "@unform/web";
 import { FormHandles } from "@unform/core";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Input } from "../../components/Input";
 import { Header } from "../../components/Header";
@@ -12,6 +12,7 @@ import { Container } from "./styles";
 import { getValidationErrors } from "../../utils/getValidationErrors";
 import { api } from "../../services/api";
 import { Textarea } from "../../components/Textarea";
+import { Report } from "../../types/report";
 
 interface FormData {
   title: string;
@@ -19,9 +20,18 @@ interface FormData {
   author: string;
 }
 
-export function CreateReport() {
+export function EditReport() {
+  const [report, setReport] = useState({} as Report);
+
   const formRef = useRef<FormHandles>(null);
   const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  const handleGetReportInfo = useCallback(async () => {
+    const response = await api.get(`news/${id}`);
+    setReport(response.data);
+  }, [id]);
 
   const handleSubmit = useCallback(
     async (data: FormData) => {
@@ -40,7 +50,8 @@ export function CreateReport() {
 
         const { author, title, description } = data;
 
-        const response = await api.post("news", {
+        const response = await api.put(`news`, {
+          id,
           title,
           description,
           author,
@@ -55,30 +66,48 @@ export function CreateReport() {
         }
       }
     },
-    [navigate]
+    [navigate, id]
   );
+
+  useEffect(() => {
+    handleGetReportInfo();
+  }, [handleGetReportInfo]);
 
   return (
     <Container>
       <Header />
 
-      <h3>Criar Noticia.</h3>
+      <h3>Editar Noticia.</h3>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <Input name="title" label="Titulo:" placeholder="Digite o nome aqui." />
+        <Input
+          defaultValue={report.title}
+          name="title"
+          label="Titulo:"
+          placeholder="Digite o nome aqui."
+        />
+
         <Input
           name="author"
           label="Nome do autor:"
           placeholder="Digite o nome do autor aqui."
+          defaultValue={report.author}
         />
         <Textarea
           name="description"
           label="Decrição:"
           placeholder="Digite a descrição aqui."
+          defaultValue={report.description}
         />
-        <Button isSecondary type="submit">
-          Enviar
-        </Button>
+        <footer>
+          <Link to={`/report-card/${id}`}>
+            <Button>Voltar</Button>
+          </Link>
+
+          <Button isSecondary type="submit">
+            Atualizar
+          </Button>
+        </footer>
       </Form>
     </Container>
   );

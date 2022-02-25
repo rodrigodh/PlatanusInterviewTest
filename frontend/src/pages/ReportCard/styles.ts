@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const apperFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -6,6 +17,11 @@ export const Container = styled.div`
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
+
+  > div:last-child,
+  > header {
+    animation: ${apperFromTop} 1s;
+  }
 
   header {
     display: flex;
@@ -17,7 +33,7 @@ export const Container = styled.div`
     margin-right: 0;
   }
 
-  header section button:last-child {
+  header section > button {
     margin-left: 16px;
     background: var(--error);
   }
@@ -27,6 +43,7 @@ export const Container = styled.div`
     padding: 16px;
     margin-top: 16px;
     border-radius: 10px;
+    margin-bottom: 1rem;
 
     h3 {
       font-size: 24px;

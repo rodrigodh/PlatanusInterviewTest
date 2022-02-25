@@ -1,21 +1,19 @@
-import { ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { Container } from "./styles";
 
-interface Props {
-  children: ReactNode;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isSecondary?: boolean;
-  onClick?: () => void;
-}
+  children: ReactNode;
+};
 
-export function Button({ children, isSecondary, onClick }: Props) {
+export function Button({ children, isSecondary, ...rest }: ButtonProps) {
   return (
-    <Container onClick={onClick} isSecondary={isSecondary}>
+    <Container {...rest} isSecondary={isSecondary}>
       {children}
     </Container>
   );
 }
 
 Button.defaultProps = {
-  onClick: undefined,
   isSecondary: undefined,
 };

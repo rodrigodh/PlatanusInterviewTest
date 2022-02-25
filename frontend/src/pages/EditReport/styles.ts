@@ -18,22 +18,24 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 0 auto;
 
-  > header {
+  > h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
     animation: ${apperFromTop} 1s;
+  }
+
+  > form {
+    animation: ${apperFromTop} 1s;
+  }
+
+  > form footer {
     display: flex;
-    max-width: 800px;
+    margin-top: 1rem;
   }
 
-  > header button {
-    margin-left: 2rem;
-  }
-
-  > section {
-    animation: ${apperFromTop} 1s;
-    margin-top: 2rem;
-
-    a + a {
-      margin-top: 2rem;
-    }
+  > form footer a {
+    margin-left: auto;
+    margin-right: 0;
+    margin-right: 1rem;
   }
 `;

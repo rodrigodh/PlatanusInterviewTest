@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const appearFromTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -10,6 +21,11 @@ export const Container = styled.div`
   > h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    animation: ${appearFromTop} 1s;
+  }
+
+  form {
+    animation: ${appearFromTop} 1s;
   }
 
   > form button {

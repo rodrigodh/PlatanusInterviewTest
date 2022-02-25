@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
@@ -19,17 +19,17 @@ export function ReportCard() {
     if (response.data) {
       setReport(response.data);
     }
-  }, []);
+  }, [id]);
 
   const handleDeleteReport = useCallback(async () => {
     await api.delete(`news/${id}`).then(() => {
       navigate("/");
     });
-  }, []);
+  }, [id, navigate]);
 
   useEffect(() => {
     handleGetReportInfo();
-  }, []);
+  }, [handleGetReportInfo]);
 
   return (
     <Container>
@@ -45,7 +45,9 @@ export function ReportCard() {
         </Profile>
 
         <section>
-          <Button isSecondary>Editar</Button>
+          <Link to={`/edit-report/${id}`}>
+            <Button isSecondary>Editar</Button>
+          </Link>
           <Button onClick={handleDeleteReport}>Deletar</Button>
         </section>
       </header>
