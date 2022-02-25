@@ -19,7 +19,7 @@ export const Container = styled.div`
   > section {
     margin-top: 2rem;
 
-    div + div {
+    a + a {
       margin-top: 2rem;
     }
   }

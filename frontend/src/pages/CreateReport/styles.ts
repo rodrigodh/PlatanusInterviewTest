@@ -7,7 +7,7 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 0 auto;
 
-  h3 {
+  > h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }

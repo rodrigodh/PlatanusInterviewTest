@@ -49,6 +49,8 @@ export function Home() {
         {filteredNews.reverse().map((report) => (
           <ReportCard key={report.id} report={report} />
         ))}
+
+        {filteredNews.length < 1 && <p>Sem noticias por aqui ainda!</p>}
       </section>
     </Container>
   );

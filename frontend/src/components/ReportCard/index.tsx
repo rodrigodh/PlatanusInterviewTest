@@ -8,7 +8,7 @@ interface Props {
 
 export function ReportCard({ report }: Props) {
   return (
-    <Container>
+    <Container to={`report-card/${report.id}`}>
       <h3>{report.title}</h3>
 
       <p>{report.description}</p>

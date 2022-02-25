@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Sofia Pro, sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -22,6 +23,3 @@ html {
   --error: #FF312E;
 }
 
-a {
-  text-decoration: none;
-}

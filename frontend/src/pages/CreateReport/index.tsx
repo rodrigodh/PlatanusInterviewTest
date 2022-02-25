@@ -16,6 +16,7 @@ import { Textarea } from "../../components/Textarea";
 interface FormData {
   title: string;
   description: string;
+  author: string;
 }
 
 export function CreateReport() {
@@ -27,18 +28,19 @@ export function CreateReport() {
       const schema = Yup.object().shape({
         title: Yup.string().min(5).required("Titulo necessario!"),
         description: Yup.string().min(10).required("Descrição necessária"),
+        author: Yup.string().min(1).required("Nome necessário"),
       });
 
       await schema.validate(data, {
         abortEarly: false,
       });
 
-      const { title, description } = data;
+      const { author, title, description } = data;
 
       const response = await api.post("news", {
         title,
         description,
-        author: "Cuphead",
+        author,
       });
 
       if (response) navigate("/");
@@ -59,6 +61,11 @@ export function CreateReport() {
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <Input name="title" label="Titulo:" placeholder="Digite o nome aqui." />
+        <Input
+          name="author"
+          label="Nome do autor:"
+          placeholder="Digite o nome do autor aqui."
+        />
         <Textarea
           name="description"
           label="Decrição:"

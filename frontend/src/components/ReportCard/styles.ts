@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -13,13 +15,16 @@ export const Container = styled.div`
   > h3 {
     font-size: 24px;
     font-weight: bold;
+    color: var(--text);
   }
 
   > p {
-    overflow-x: hidden;
     margin: 16px 0;
     white-space: pre-line;
     text-overflow: ellipsis;
+    max-height: 10rem;
+    overflow: hidden;
+    color: var(--text);
   }
 
   > footer {
@@ -37,6 +42,7 @@ export const Container = styled.div`
   > footer strong {
     font-weight: 400;
     font-size: 16px;
+    color: var(--text);
   }
 
   :hover {
